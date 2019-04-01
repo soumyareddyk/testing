@@ -1,0 +1,27 @@
+def workspace;
+node
+{
+    stage('checkout')
+    {
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/soumyareddyk/testing.git']]])
+ workspace pwd()   
+    }
+    stage('static code analysis')
+    {
+        echo"static code analysis"
+    }
+        stage('Build')
+        {
+            echo"Build the code"
+        }
+        stage('Test')
+        {
+        echo"unit testing"
+        }
+        stage('Delivery')
+        {
+            echo"Delivery the code"
+        }
+        
+        
+    }
